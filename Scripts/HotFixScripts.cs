@@ -15,7 +15,7 @@ public class HotFixScripts : MonoBehaviour
     {
         env = new LuaEnv();
         env.AddLoader(MyLoader);
-        env.DoString("require 'fish'");
+        env.DoString("require 'mfish'");
     }
 
     // Start is called before the first frame update
@@ -32,14 +32,14 @@ public class HotFixScripts : MonoBehaviour
 
     private byte[] MyLoader(ref string filePath)
     {
-        //¾ø¶ÔÂ·¾¶
+        //Â¾Ã¸Â¶Ã”Ã‚Â·Â¾Â¶
         string absPath = @"D:\unity\FishingJoy\UnityPackageManager\" + filePath + ".lua.txt";
         return System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(absPath));
     }
 
     private void OnDisable()
     {
-        env.DoString("require'fishDispose'");
+        env.DoString("require'mfishDispose'");
     }
 
     private void OnDestroy()
